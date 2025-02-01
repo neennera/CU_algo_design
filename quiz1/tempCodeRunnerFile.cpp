@@ -1,0 +1,1 @@
+printf("%d %d %d %d\n", h, w, mid_h, mid_w);
