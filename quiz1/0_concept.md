@@ -16,6 +16,21 @@ cur[0] = max(cur[0] + x, x); // use like normal cur
 ans[0] = max(ans[0], cur[0]);
 ```
 - a65_q1_mt_matrix : ถ้าค่อยๆเจาะ index แล้วกำหนด flag neg, T มันจะไม่ได้ เพราะตอน T ค่ามันไม่ได้หักล้างกัน ให้ใช้การตัด metirx เอา โดยสมมุติว่าเราจะไปที่ top-right ก็ต้องให้ j-mid แล้วไปเจาะดู metrix คัวนั้น, ส่วนการ Transport ก็แค่ทำการสลับ i <-> j เช่น get_mt(j-mid, i-mid), หากมี neg ก็ใช้  -get_mt(i-mid,j) 
+- a59_midp4_mcsw : ใช้ dequq มาทำ sliding window ที่มีการกำหนด width (ต้อง pop front, pop back ออก)
+```
+q.push_back({-1, 0}); // basecase
+>> loop
+while (!q.empty() && i - q.front().first > W)
+{
+    q.pop_front();
+}
+maxx = max(maxx, cur - q.front().second);
+while (!q.empty() && q.back().second >= cur)
+{
+    q.pop_back();
+}
+q.push_back({i, cur});
+```
 
 
 
@@ -38,6 +53,7 @@ ans[0] = max(ans[0], cur[0]);
 int a1, b1, c1, d1;
 tie(a1, b1, c1, d1) = a;
 ```
+- a57_m4_gaa : แค่ซอย recursive แต่ระวัง index ที่เริ่มที่ 1
 
 # Tips
 - หากจะยกกำลังสองเยอะๆ ใช้ (1LL << n)
