@@ -2,18 +2,17 @@
 using namespace std;
 #define ll long long
 
-int N, M, ans = 1001;
-vector<int> stu[1001];
+int N, M, ans;
+vector<int> stu[1002];
 int ct[1001];
 int stu_ct = 0, numday = 0;
-void f(int last)
+void f(int a, int last, int b = 0)
 {
     if (numday == N)
     {
         ans = min(ans, stu_ct);
-        return;
     }
-    if (stu_ct >= ans || last >= M)
+    if (stu_ct >= ans || numday >= N)
         return;
     for (size_t i = last; i < M; i++)
     {
@@ -25,7 +24,7 @@ void f(int last)
             ct[x]++;
         }
 
-        f(i + 1);
+        f(stu_ct, i + 1, numday);
 
         stu_ct--;
         for (auto x : stu[i])
@@ -54,6 +53,6 @@ int main()
         }
     }
     ans = M;
-    f(0);
+    f(0, 0);
     cout << ans;
 }
