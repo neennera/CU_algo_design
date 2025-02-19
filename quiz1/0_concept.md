@@ -31,7 +31,24 @@ while (!q.empty() && q.back().second >= cur)
 }
 q.push_back({i, cur});
 ```
-
+- a64_q1_lawn_mowing : B-search แต่ค่าที่เอามาคิดช่วงคือ mid และ a
+  - ใช้ l<=r ; l = mid+1, r=mid-1
+```
+while (l <= r)
+{
+    ll mid = (l + r) >> 1;
+    ll p = (pf[mid] - pf[a - 1]) + ((mid - a + 1) * K);
+    if (p <= b)
+    {
+        ans = max(ans, pf[mid] - pf[a - 1]);
+        l = mid + 1;
+    }
+    else
+    {
+        r = mid - 1;
+    }
+}
+```
 
 
 # AA
@@ -59,6 +76,7 @@ tie(a1, b1, c1, d1) = a;
 - หากจะยกกำลังสองเยอะๆ ใช้ (1LL << n)
 - vector<vector<ll>> ansMe(4) มาแก้ ansMe[0] = {A, B, C, D} ทีหลังได้
 - boolean ถ้ากำหนดเป็น 0 แล้วอยากใช้ not ให้ใช้  !b
+- substr(start, stop) ex: s1.substr(0, mid), s2.substr(mid, length)
 
 
 
