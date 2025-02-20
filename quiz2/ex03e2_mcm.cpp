@@ -2,39 +2,40 @@
 using namespace std;
 #define ll long long
 
+const int INF = 1e9; // Large value for initialization
 int N;
-int m[102][2];
-ll dp[102][102][2];
-ll f(int i, int j, int c)
+int m[102]; // Store matrix dimensions
+ll dp[102][102];
+
+ll f(int i, int j)
 {
-    if (dp[i][j][c])
-        return dp[i][j][c];
     if (i == j)
-    {
-        return dp[i][j][c] = m[i][c];
-    }
-    ll ans = INT_MAX;
+        return 0; // No cost if there's only one matrix
+
+    if (dp[i][j] != -1)
+        return dp[i][j];
+
+    ll ans = LLONG_MAX;
     for (int k = i; k < j; k++)
     {
-        ans = min(ans, f(i, k, 0) + f(k + 1, j, 1));
+        ll cost = f(i, k) + f(k + 1, j) + (ll)m[i - 1] * m[k] * m[j];
+        ans = min(ans, cost);
     }
-    return dp[i][j][c] = ans;
+    return dp[i][j] = ans;
 }
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int r, c;
+
     cin >> N;
-    cin >> r >> c;
-    m[1][1] = r;
-    m[1][0] = c;
-    for (int i = 2; i <= N; i++)
+    for (int i = 0; i <= N; i++)
     {
-        r = c;
-        cin >> c;
-        m[i][1] = r;
-        m[i][0] = c;
+        cin >> m[i]; // Read matrix dimensions
     }
-    cout << f(1, N, 0);
+
+    memset(dp, -1, sizeof(dp)); // Initialize dp array with -1
+
+    cout << f(1, N) << "\n"; // Compute minimum multiplications
 }
