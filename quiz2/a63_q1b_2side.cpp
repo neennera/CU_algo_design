@@ -1,61 +1,71 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-#define fi first
-#define se second
-const int N = 4e5 + 9;
-const int shift = 2e5;
-const int K = 51;
-int c[N][2];
-int dp1[N][2];
-int dp2[N][K][2];
-int n, w, KK;
-int ans = 0;
-void solve1()
+#define ll long long
+
+int N, W, K;
+int l[200002], r[200002];
+int dp[200002][2][51];
+// bonus has K <= 50; so if K == N, we only use dp[200002][2]
+
+int sol1()
 {
-    /// case k = n
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= N; i++)
     {
-        for (int j = 0; j <= 1; j++)
+        if (i - W - 1 <= 0)
         {
-            dp1[i + shift][j] = max(dp1[i + shift - 1][j], dp1[i + shift - w - 1][j ^ 1] + c[i + shift][j]);
+            dp[i][0][0] = max(dp[i - 1][0][0], l[i]);
+            dp[i][1][0] = max(dp[i - 1][1][0], r[i]);
+        }
+        else
+        {
+            dp[i][0][0] = max(dp[i - 1][0][0], dp[i - W - 1][1][0] + l[i]);
+            dp[i][1][0] = max(dp[i - 1][1][0], dp[i - W - 1][0][0] + r[i]);
         }
     }
-    ans = max(dp1[n + shift][0], dp1[n + shift][1]);
+    return max(dp[N][0][0], dp[N][1][0]);
 }
-void solve2()
+
+int sol2()
 {
-    /// case k
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= N; i++)
     {
-        for (int k = 1; k <= KK; k++)
+
+        for (int k = 1; k <= K; k++)
         {
-            for (int j = 0; j <= 1; j++)
-            {
-                dp2[i + shift][k][j] = max(dp2[i + shift - 1][k][j], dp2[i + shift - 1 - w][k - 1][j ^ 1] + c[i + shift][j]);
-            }
+            // you use k board from previous , or buy new board in range i-W-1
+            dp[i][0][k] = max(dp[i - 1][0][k], dp[max(i - W - 1, 0)][1][k - 1] + l[i]);
+            dp[i][1][k] = max(dp[i - 1][1][k], dp[max(i - W - 1, 0)][0][k - 1] + r[i]);
         }
     }
-    for (int i = 1; i <= KK; i++)
+    int ans = 0;
+    for (int k = 1; k <= K; k++)
     {
-        for (int j = 0; j < 2; j++)
-            ans = max(ans, dp2[n + shift][i][j]);
+        ans = max({ans, dp[N][0][k], dp[N][1][k]});
     }
+    return ans;
 }
+
 int main()
 {
-    ios::sync_with_stdio(false), cin.tie(0);
-    cin >> n >> w >> KK;
-    for (int i = 1; i <= n; i++)
-        cin >> c[i + shift][0];
-    for (int i = 1; i <= n; i++)
-        cin >> c[i + shift][1];
-    if (KK == n)
-        solve1();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cin >> N >> W >> K;
+    for (int i = 1; i <= N; i++)
+        cin >> l[i];
+    for (int i = 1; i <= N; i++)
+        cin >> r[i];
+    if (K == N)
+        cout << sol1();
     else
-        solve2();
-    cout << ans << '\n';
-    return 0;
+        cout << sol2();
+    // cout << endl;
+    // for (int i = 1; i <= N; i++)
+    // {
+    //     cout << dp[i][0][0] << " ";
+    // }
+    // cout << endl;
+    // for (int i = 1; i <= N; i++)
+    // {
+    //     cout << dp[i][1][0] << " ";
+    // }
 }

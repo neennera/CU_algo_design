@@ -1,6 +1,15 @@
 # A
 - 2 Side Billboard : ใช้ยังไงนะ
 - Bigger Billboard : แยกได้สวยมาก
+- Pressure Station : เยอะมาก ปวดหัว ปวดตา ;=;
+- Arch Match : จิ้ม i = 1 -> N, j = N -> 1
+```
+dp[i][j] = (a[i] * a[j]) + dp[i + 1][j - 1];
+for (int k = i; k < j; k++)
+{
+    dp[i][j] = max(dp[i][j], dp[i][k] + dp[k + 1][j]);
+}
+```
 
 # AA
 - distance one : เขียนบิต 0/1 ที่ 1 ต้องห่างกันอย่างน้อย K
