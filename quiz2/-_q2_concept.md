@@ -1,7 +1,3 @@
-# MORE
-- distance one
-- tile
-
 # A
 - 2 Side Billboard : ใช้ยังไงนะ
 - Bigger Billboard : แยกได้สวยมาก
