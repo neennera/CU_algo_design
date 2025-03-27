@@ -1,0 +1,38 @@
+
+# list of chore
+: it's a list
+: wrongggg. it's a list, a list of chore
+
+a65_q0_degrees
+a60a_q3_component
+Detecting Cycle
+Cycle in Tree
+a62_q2a_line_graph
+a64_q3_wildfire
+a66_f1_largest_diff_path
+da66_f2_grid_loop	
+ex05e1_shortest
+ex05m2_connection
+a62_q2a_pandemic
+a60b_q3_perimeter		
+ex05e2_planning
+ex06e1_cable
+da67_f_border_extend
+a65_q3a_in_the_middle
+a60b_q3_ikea
+a66_q3a_sandworm
+a59_q3_hole
+a60a_q3_xor_roada58_q3_p3_PandG
+ex05h1_rank
+ex05e3_catapult
+ex06e2_shortest
+ex06e3_columbia
+a64_q3_shortest_start
+ex06m1_massrelay
+ex06m2_exchange
+a61_q2_farthest
+a58_q3_p3a_hacking
+a65_q3a_expressway
+a66_f1_ev_truck	
+a66_q4a_clique
+a66_q3b_hex_map_v2
