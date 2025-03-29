@@ -1,5 +1,5 @@
 # Mistake
-- ระวัง index,
+- ระวัง index โดยเฉพาะสลับ (x,y) หรือการใช้ (i,j) คู่ loop for i
 - ระวังเช็ค `ny>N, ny<M`
 - จะหา cycle ใน undirected ระวังวนไปเจอ pa
   ```
@@ -11,6 +11,7 @@
   ```
 - vector<vector<int>> ดีกว่า
 - แยก array ดีกว่าทำ vector<pair>
+- อย่าลืม set pa[i]
 
 
 # Tips
@@ -31,6 +32,8 @@
   - to check if there a cycle -> queue <u , pa>
 - Cycle in Tree : ถ้า function ไม่ใช่ void แล้วไม่มีอะไร return กลับมา อาจขึ้น - ได้
 - Connection : หาว่าในระยะ degree = 0 ถึง k มี node กี่ตัวมากสุด (N=1000) เลยวนเช็ค DFS ทุกๆตัวได้เลย
+- Perimeter : อ๋อง อ่านโจทย์ไม่เข้าใจ
+- Task Planning : ทำ topology
 
 # Rerun
 - Cycle in Tree 
@@ -40,12 +43,8 @@
 : it's a list
 : wrongggg. it's a list, a list of chore
 
-da66_f2_grid_loop	
-ex05m2_connection
-a62_q2a_pandemic
-a60b_q3_perimeter
-ex05e2_planning
------- CAASE -------
+
+
 ex06e1_cable
 da67_f_border_extend
 a65_q3a_in_the_middle
