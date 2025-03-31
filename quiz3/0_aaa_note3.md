@@ -12,6 +12,8 @@
 - vector<vector<int>> ดีกว่า
 - แยก array ดีกว่าทำ vector<pair>
 - อย่าลืม set pa[i]
+- in the middle : ใช้ stack(DFS) ไม่ผ่าน แต่ใช้ queue(BFS) ผ่าน => ใช้ queue มันก้าวสั้นกว่า
+- unsigned long long กับ 2^30
 
 
 # Tips
@@ -45,18 +47,15 @@
 
 
 
-ex06e1_cable
-da67_f_border_extend
-a65_q3a_in_the_middle
-a60b_q3_ikea
+
 a66_q3a_sandworm
-a59_q3_hole
-------------------
-a60a_q3_xor_roada58_q3_p3_PandG
+a58_q3_p3_PandG
 ex05h1_rank
+------------------
 ex05e3_catapult
 ex06e2_shortest
 ex06e3_columbia
+------------------
 a64_q3_shortest_start
 ex06m1_massrelay
 ex06m2_exchange
@@ -67,3 +66,11 @@ a65_q3a_expressway
 a66_f1_ev_truck	
 a66_q4a_clique
 a66_q3b_hex_map_v2
+------------
+a57_f4_journey
+ex07m2_15puzzle
+da67_f_travelling_tourist
+a64_q4_closest_subset
+ex07e3_coloring
+a64_q4_path_sum
+a65_q4_collector
