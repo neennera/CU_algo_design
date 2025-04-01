@@ -15,6 +15,10 @@
 - in the middle : ใช้ stack(DFS) ไม่ผ่าน แต่ใช้ queue(BFS) ผ่าน => ใช้ queue มันก้าวสั้นกว่า
 - unsigned long long กับ 2^30
 - ถ้ารันรับค่าไม่ได้ ให้เช็คว่า vector ได้ resize ยัง
+- ระวัง `dist[v] <= w + ww`
+- floynd-warshell อย่าลืม set a[i][i] = 0 ตอนแรก
+- floynd-warshell เรียง k, i, j เท่านั้น!!
+- floynd-warshell เช็ค neg ว่าพอทำไปแล้ว a[i][i] < 0
 
 
 # Tips
@@ -42,6 +46,15 @@
 - Connection : หาว่าในระยะ degree = 0 ถึง k มี node กี่ตัวมากสุด (N=1000) เลยวนเช็ค DFS ทุกๆตัวได้เลย
 - Perimeter : อ๋อง อ่านโจทย์ไม่เข้าใจ
 - Task Planning : ทำ topology
+- Graph Coloring ไม่ค่อยเกต แต่คือ
+  - ถ้า f==N ถือว่าจบ หา tmp = color สูงสุด แล้ว ans = min(ans,tmp)
+  - ถ้ายัง วนลูปหาสี assign ให้น้อยสุด จาก 1->N
+    - ถ้า i > ans // อย่าใช้สีเกิน ans ที่เคยตอบได้ และ เคยใช้สีน้อยกว่านี้ -> break
+    - color[u] = i
+    - check(u) // วนทุกๆ v ที่ติด u ว่าสีตรงไหม
+    - ถ้าไม่ตรงทั้งหมด solve(u+1) หา node index ถัดไป
+    - แต่ยังอยู่ในลูป คอยวนมาเช็คกรณีแบบ 2->3 ดีกว่าใน ans = 4
+- Clique : ทำการตัดจบ state search 0/1 โดยว่าถ้า now + quicksum ที่เหลือด้านหลังมันรวมได้ไม่มากกว่า ans -> อันนี้ไม่ใช่คำตอบแน่ๆ
 
 # Rerun
 - Cycle in Tree 
@@ -54,23 +67,12 @@
 
 
 
-
-a66_q3a_sandworm
-a58_q3_p3_PandG
+  
 ex05h1_rank
-a61_q2_farthest
-ex06m1_massrelay
-------------------
-a58_q3_p3a_hacking
-a65_q3a_expressway
-a66_f1_ev_truck	
-a66_q4a_clique
-a66_q3b_hex_map_v2
+a58_q3_p3_Pand
+66_q3a_sandworm
 ------------
-a57_f4_journey
-ex07m2_15puzzle
-da67_f_travelling_tourist
-a64_q4_closest_subset
-ex07e3_coloring
-a64_q4_path_sum
-a65_q4_collector
+ทวนก่อนนอน
+------------
+ex06m1_massrelay (ปล่อยมันไปเถอะ)
+a61_q2_farthest (90/100)
