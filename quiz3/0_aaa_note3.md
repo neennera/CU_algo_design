@@ -14,6 +14,7 @@
 - อย่าลืม set pa[i]
 - in the middle : ใช้ stack(DFS) ไม่ผ่าน แต่ใช้ queue(BFS) ผ่าน => ใช้ queue มันก้าวสั้นกว่า
 - unsigned long long กับ 2^30
+- ถ้ารันรับค่าไม่ได้ ให้เช็คว่า vector ได้ resize ยัง
 
 
 # Tips
@@ -21,6 +22,11 @@
   ```
   tuple<int, int, int> qq = q.front();
   u = get<0>(qq);
+  ```
+- Exchange : ทำ floynd-warshell O(N^3), ทำ break หาก profit โผล่มาก็ได้
+    ```
+    A[i][j] = max(A[i][j], A[i][k] * A[k][j]);
+    if (i == j) profit |= (A[i][j] > 1);
   ```
 
 
@@ -40,6 +46,7 @@
 # Rerun
 - Cycle in Tree 
 - Largest Diff Path (95/100)
+- catapult
 
 # list of chore
 : it's a list
@@ -51,16 +58,9 @@
 a66_q3a_sandworm
 a58_q3_p3_PandG
 ex05h1_rank
-------------------
-ex05e3_catapult
-ex06e2_shortest
-ex06e3_columbia
-------------------
-a64_q3_shortest_start
-ex06m1_massrelay
-ex06m2_exchange
 a61_q2_farthest
--------------
+ex06m1_massrelay
+------------------
 a58_q3_p3a_hacking
 a65_q3a_expressway
 a66_f1_ev_truck	
