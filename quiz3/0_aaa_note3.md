@@ -16,9 +16,11 @@
 - unsigned long long กับ 2^30
 - ถ้ารันรับค่าไม่ได้ ให้เช็คว่า vector ได้ resize ยัง
 - ระวัง `dist[v] <= w + ww`
-- floynd-warshell อย่าลืม set a[i][i] = 0 ตอนแรก
-- floynd-warshell เรียง k, i, j เท่านั้น!!
-- floynd-warshell เช็ค neg ว่าพอทำไปแล้ว a[i][i] < 0
+- floynd-warshell
+  - อย่าลืม set a[i][i] = 0 ตอนแรก
+  - เรียง k, i, j เท่านั้น!!
+  - เช็ค neg ว่าพอทำไปแล้ว a[i][i] < 0
+- Sandworm : พังกรณีที่วาร์ปลงไปเจอหนอนบนช่องที่มีพายุ ต้องดักไว้ด้วย
 
 
 # Tips
@@ -55,6 +57,17 @@
     - ถ้าไม่ตรงทั้งหมด solve(u+1) หา node index ถัดไป
     - แต่ยังอยู่ในลูป คอยวนมาเช็คกรณีแบบ 2->3 ดีกว่าใน ans = 4
 - Clique : ทำการตัดจบ state search 0/1 โดยว่าถ้า now + quicksum ที่เหลือด้านหลังมันรวมได้ไม่มากกว่า ans -> อันนี้ไม่ใช่คำตอบแน่ๆ
+- SCC
+  - set vis = 0
+  - DFS1 : ให้ vis=1, ไปหาลูก v , ยัดเข้า order
+  - set vis = 0
+  - DFS2 : ใช้ reverse path, order หลังมาหน้า, ทำ global component++ หรือ component.push_back(u)
+  - ตอนจบ clear component, ย้ายค่าไปใน vector (กรณีเอาตัว) หรือ ans = max(ans, componnent) กรณีเอาจำนวน
+- Pacman and Ghost
+  - กำหนดให้ตอนแรกเป็น -1 ถ้ายังมาไม่ถึง -2 ถ้าเข้าไม่ได้
+  - flood fill จำเวลาที่มาถึงช่องได้ไวสุด
+  - แพ็คแมนจะหนีได้หากมีช่องนึงที่  ( ctPac[i][j] >= 0 ) && ( ctGhost[i][j] < 0 )
+  - คือ แพ็คแมนถึงละ ผียังไม่ถึง ดังนั้น สามาถจู๊คได้
 
 # Rerun
 - Cycle in Tree 
@@ -64,10 +77,7 @@
 # list of chore
 : it's a list
 : wrongggg. it's a list, a list of chore
-
-
-
-  
+ 
 ex05h1_rank
 a58_q3_p3_Pand
 66_q3a_sandworm
