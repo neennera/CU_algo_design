@@ -1,3 +1,16 @@
+# Mistake
+- เวลาลูปใน pq อย่าลืมเช็ค !pq.empty()
+
+# Greedy
+- Team Work : reward คืออยากให้งานเสร็จไว คนทำงานเท่ากัน ให้แจกงานที่ระยะสั้นไป N คน แล้วถ้าเหลือ ค่อยแจกซ้อน (อ่านโค้ดน่าจะเกตกว่า)
+
+# Niche
+- Fractional Knapsack : เวลาใช้ double ให้เอาตัวแปรทุกอย่างเป็น double เผื่อ
+```
+priority_queue<tuple<double, double, double>> aw;
+scanf("%lf", &x);
+printf("%.4lf", ans);
+```
 
 # list of chore
 : it's a list
@@ -14,7 +27,7 @@ a64_q4_closest_subset
 da66_f1_buffet_flight
 da66_f1_sea_bridge
 ex04e1_interval
-ex04e2_fknapsack
+
 ex04e3_teamwork
 a60b_mid_p1_buffet
 a58_m4_supply
