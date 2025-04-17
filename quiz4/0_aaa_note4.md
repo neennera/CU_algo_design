@@ -3,6 +3,16 @@
 
 # Greedy
 - Team Work : reward คืออยากให้งานเสร็จไว คนทำงานเท่ากัน ให้แจกงานที่ระยะสั้นไป N คน แล้วถ้าเหลือ ค่อยแจกซ้อน (อ่านโค้ดน่าจะเกตกว่า)
+- Interval Selection : อยากเลือกงานที่มี [start, finish] ให้ได้เยอะสุด ใช้ pq เรียงตาม finish แล้ววนลูป 
+```
+while (!pq.empty())
+{
+    ans++;
+    t = pq.top().w; pq.pop();
+    while (!pq.empty() && pq.top().s < t) pq.pop();
+}
+```
+- Buffet : ติดไฟที่กว้าง w-x ถึง w+x ถ้ามีอาหารที่ตำแหน่ง y ให้ติดแล้วครอบคลุมไปจบ y+2*W
 
 # Niche
 - Fractional Knapsack : เวลาใช้ double ให้เอาตัวแปรทุกอย่างเป็น double เผื่อ
