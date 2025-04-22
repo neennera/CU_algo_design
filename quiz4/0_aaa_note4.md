@@ -71,6 +71,24 @@ if (dist > target || dist + best < target)
 ```
 
 - Subset Sum
+- Journey : พยายามเต็มที่ละ
+
+```
+// pruning : if d in every best possible way afterthis still not more than ans_now -> stop it
+int pre_cost = 0;
+for (int i = 2; i <= N; i++)
+{
+    // already visit this city
+    // but it must exclude u ! since you not yet decide path from u
+    if (state & (1 << (i - 1)) && i != u)
+        continue;
+    pre_cost += pre[i];
+}
+// cout << "++ " << u << " " << state << " " << d << " " << pre_cost << " " << dp[(1 << N) - 1][N] << "\n";
+
+if (d + pre_cost <= dp[(1 << N) - 1][N])
+    continue;
+```
 
 # list of chore
 

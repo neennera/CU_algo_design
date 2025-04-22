@@ -5,7 +5,7 @@ using namespace std;
 int N;
 int dist[22][22];
 int dp[(1 << 21)][22];
-vector<int> pre; // pruning : pre = best happy point it can get when it leave this node
+vector<int> pre(22); // pruning : pre = best happy point it can get when it leave this node
 
 // d, state, u : use tuple is more light weight than struct
 // distance is more value than state !
@@ -18,7 +18,7 @@ int main()
     cin >> N;
 
     // pruning : the best possible happiness it can get visiting best path from each node
-    int pre_cost = 0;
+    // int pre_cost = 0;
 
     for (int i = 1; i <= N; i++)
     {
@@ -29,7 +29,8 @@ int main()
             if (i != j)
                 best = max(best, dist[i][j]);
         }
-        pre_cost += best;
+        pre[i] = best;
+        // pre_cost += best;
 
         for (int j = 0; j < (1 << N); j++)
         {
@@ -49,15 +50,27 @@ int main()
         // N shouldn't be visit here
         if (u == N && state != (1 << N) - 1)
             continue;
-        // cout << ">> " << u << " " << state << " " << d << "\n";
+
         if (dp[state][u] > d)
             continue;
         dp[state][u] = d;
 
         // pruning : if d in every best possible way afterthis still not more than ans_now -> stop it
+        int pre_cost = 0;
+        for (int i = 2; i <= N; i++)
+        {
+            // already visit this city
+            // but it must exclude u ! since you not yet decide path from u
+            if (state & (1 << (i - 1)) && i != u)
+                continue;
+            pre_cost += pre[i];
+        }
+        // cout << "++ " << u << " " << state << " " << d << " " << pre_cost << " " << dp[(1 << N) - 1][N] << "\n";
+
         if (d + pre_cost <= dp[(1 << N) - 1][N])
             continue;
 
+        // cout << ">> " << u << " " << state << " " << d << "\n";
         for (int i = 2; i <= N; i++)
         {
             // already visit this city
