@@ -1,6 +1,9 @@
 # Mistake
 
 - เวลาลูปใน pq อย่าลืมเช็ค !pq.empty()
+- เรียง distance ก่อน state
+- เวลา shift bit ดูด้วยว่าต้องใช้ (1 << (i-1)) ไหม
+- function อย่าลืม return ด้วย ! ไม่งั้น xxxxxx
 
 # Greedy
 
@@ -46,6 +49,28 @@ printf("%.4lf", ans);
 - travelling_tourist
   - เก็บ state แค่เมืองที่ต้องการไปเที่ยว (เมือง K) แบบ bitmask
   - ทำ priority_queue เป็น dist และ state จะไปเมืองไหนต่อก็ floyde-marshell
+- Journey
+  - (80%) tuple lightweight กว่า struct, เรียง distance ก่อน state
+  - (90%) set ค่าใน dp[u][i] ก่อนจะยัดเข้าใน pq ด้วย
+- Fracmental Knapsack : ทำ เลือก/ไม่เลือก ที่มี prunning โดยการ predict ค่าที่ดีที่สุดที่เราจะเลือกเข้ากระเป๋าได้แบบทศนิยม
+  - ยอมเสีย O(N) เพื่อตัด O(2^N)
+  - ตอนเช็ค prunning จะ return ค่าของ double เพิ่ม bound ก็ดี `if (price + pd + 1 <= ans) return;` (แต่เจอไม่บ่อย)
+  - นีรอย่าเรียก predict(id+1) ทั้งที่มันเลือก id ตัวเองได้สิ แง ;-;
+- path sum : คำนวน best แค่เฉพาะ node ที่ยังไม่ได้ไปก็พอ
+  - ยอมเสีย N เพื่อตัด N^2 เยอะๆ !
+
+```
+int best = 0;
+for (size_t i = 0; i < N; i++)
+{
+    if (!vis[i])
+        best += b[i];
+}
+if (dist > target || dist + best < target)
+    return false;
+```
+
+- Subset Sum
 
 # list of chore
 
@@ -53,11 +78,11 @@ printf("%.4lf", ans);
 : wrongggg. it's a list, a list of chore
 
 state space search ----
-a57_f4_journey
 da67_f_travelling_tourist +++
+a57_f4_journey
 a64_q4_path_sum
 a65_q4_collector
-ex07m2_15puzzle (niche ไป)
+ex07m2_15puzzle (niche ไป ไม่ทำ)
 ex07e3_coloring
 a64_q4_closest_subset
 da66_f1_buffet_flight
